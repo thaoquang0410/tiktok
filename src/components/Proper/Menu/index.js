@@ -11,7 +11,7 @@ const cx = classNames.bind(styles)
 const defaultFn = () =>{
         
 }
-function Menu({children, items = [],onChange=defaultFn}) {
+function Menu({children, items = [],onChange=defaultFn,hideOnClick=false}) {
     
     const [history,setHistory] = useState([{ data:items }])
     const current = history[history.length - 1];
@@ -34,6 +34,7 @@ function Menu({children, items = [],onChange=defaultFn}) {
         delay = {[0,700]}
         offset={[12,8]}
         placement="bottom-end"
+        hideOnClick={hideOnClick}
         render={(attrs) => (
             <div className={cx('menu-items')} tabIndex="-1" {...attrs}>
                 <ProperWrapper className={cx('menu-poper')}>
@@ -41,11 +42,14 @@ function Menu({children, items = [],onChange=defaultFn}) {
                     onBack={() =>{
                         setHistory(prev => prev.slice(0,prev.length-1))
                     }} />}  
-                    {renderItems()}
+                    <div className={cx('menu-body')}>
+                        {renderItems()}
+                    </div>
                 </ProperWrapper>
             </div>
         )}
         onHide={() => setHistory(prev => prev.slice(0,1))}
+        
     >
        {children}
     </Tippy>

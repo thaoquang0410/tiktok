@@ -32,7 +32,7 @@ export const InboxIcon = ({ width = '1.8rem', height = '1.8rem', className }) =>
     </svg>
 );
 
-export const SearchIcon = ({ width = '1.7rem', height = '1.7rem', className }) => (
+export const SearchIcon = ({ width = '1.5rem', height = '1.5rem', className }) => (
     <svg
         className={className}
         width={width}

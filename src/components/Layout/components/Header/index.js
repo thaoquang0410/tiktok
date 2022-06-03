@@ -1,21 +1,20 @@
 import styles from './Header.module.scss'
 import { useState, useEffect } from 'react'
 import classNames from 'classnames/bind';
+import routes from '~/config/routes'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleQuestion, faCircleXmark, faCoins, faEllipsisVertical, faGear, faLanguage, faMagnifyingGlass, faSign, faSignOut, faSpinner, faUser } from '@fortawesome/free-solid-svg-icons';
-import { Wrapper as ProperWrapper } from '~/components/Proper';
+import { faCircleQuestion, faCoins, faEllipsisVertical, faLanguage,  faSignOut, faUser } from '@fortawesome/free-solid-svg-icons';
 import Button from '~/components/Button';
-import Tippy from '@tippyjs/react/headless';
 import 'react-tippy/dist/tippy.css'
 import Image from '~/components/Image'
 import 'tippy.js/dist/tippy.css';
-   
+import Search from '../Search'  
 import images from '~/assets/images'
-import AccountItem from '~/components/AccountItem';
 import Menu from '~/components/Proper/Menu';
-import { faKeyboard, faMessage } from '@fortawesome/free-regular-svg-icons';
+import { faKeyboard} from '@fortawesome/free-regular-svg-icons';
 import { Tooltip } from 'react-tippy';
-import { InboxIcon, SearchIcon, UploadIcon } from '~/components/Icons';
+import { InboxIcon, UploadIcon } from '~/components/Icons';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles)
 
@@ -53,13 +52,7 @@ const  MENU_ITEMS = [
     const currentUser = true;
 function Header() {
 
-    const [searchResult, setSearchResult] = useState([]);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1, 2, 3])
-        }, 0);
-    }, [])
+    
 
     const handleMenuChange = (menuItem) => {
         switch (menuItem.type) {
@@ -94,36 +87,9 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <img src={images.logo} alt="Tiktok" />
+                    <Link to={routes.home} className={cx('logo-link')}><img src={images.logo} alt="Tiktok" /></Link>
                 </div>
-                <Tippy
-                    visibile={searchResult.length > 0}
-                    interactive
-                    render={attrs => (
-                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                            <ProperWrapper>
-                                <h4 className={cx('search-title')}>
-                                    Accounts
-                                </h4>
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                            </ProperWrapper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input placeholder="Search accounts and videos" spellcheck={false}
-                        />
-                        <button className={cx('clear')}>
-                            <FontAwesomeIcon icon={faCircleXmark} />
-                        </button>
-                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-                        <button className={cx('search-btn')}>
-                            <SearchIcon />
-                        </button>
-                    </div>
-                </Tippy>
+                <Search />
                 <div className={cx('actions')}>
                 {currentUser ? ( 
                     <>
