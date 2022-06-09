@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tippy from '@tippyjs/react/headless';
-import * as searchService from '~/apiServices/searchService'
+import * as searchService from '~/services/searchService'
 import { Wrapper as ProperWrapper } from '~/components/Proper';
 import AccountItem from '~/components/AccountItem';
 import {  SearchIcon } from '~/components/Icons';

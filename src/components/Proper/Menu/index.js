@@ -6,6 +6,7 @@ import classNames from 'classnames/bind';
 import MenuItem from './MenuItem'
 import Header from './Header';
 import { useState } from 'react';
+import PropTypes from 'prop-types'
 const cx = classNames.bind(styles)
 
 const defaultFn = () =>{
@@ -38,7 +39,7 @@ function Menu({children, items = [],onChange=defaultFn,hideOnClick=false}) {
         render={(attrs) => (
             <div className={cx('menu-items')} tabIndex="-1" {...attrs}>
                 <ProperWrapper className={cx('menu-poper')}>
-                    {history.length > 1 && <Header title="Language" 
+                    {history.length > 1 && <Header title={current.title} 
                     onBack={() =>{
                         setHistory(prev => prev.slice(0,prev.length-1))
                     }} />}  
@@ -55,5 +56,10 @@ function Menu({children, items = [],onChange=defaultFn,hideOnClick=false}) {
     </Tippy>
      );
 }
-
+Menu.propTypes = {
+    children: PropTypes.node.isRequired, 
+    items: PropTypes.array,
+    onChange:PropTypes.func,
+    hideOnClick:PropTypes.bool,
+}
 export default Menu;
