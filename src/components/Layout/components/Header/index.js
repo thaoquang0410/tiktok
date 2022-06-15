@@ -49,7 +49,7 @@ const  MENU_ITEMS = [
         title: 'Keyboard shortcuts'
     }
 ]
-    const currentUser = true;
+    const currentUser = false;
 function Header() {
 
     
