@@ -36,7 +36,6 @@ function Search() {
 
             setLoading(false)
         }
-
         fetchApi();
     }, [debounce])
 
@@ -52,7 +51,7 @@ function Search() {
         setSearchValue(searchValue);
     }
 
-   
+
     return ( 
         <Tippy
         visible={showResult && searchResult.length > 0}

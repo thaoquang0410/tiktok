@@ -1,5 +1,5 @@
 import styles from './Header.module.scss'
-import { useState, useEffect } from 'react'
+// import { useState, useEffect } from 'react'
 import classNames from 'classnames/bind';
 import routes from '~/config/routes'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -50,9 +50,8 @@ const  MENU_ITEMS = [
     }
 ]
     const currentUser = false;
-function Header() {
 
-    
+function Header() {
 
     const handleMenuChange = (menuItem) => {
         switch (menuItem.type) {
